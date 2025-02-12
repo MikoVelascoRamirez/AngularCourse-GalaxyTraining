@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "app-users-v1": {
+    "app01-standalone": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/app-users-v1",
+            "outputPath": "dist/app01-standalone",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "app-users-v1:build:production"
+              "buildTarget": "app01-standalone:build:production"
             },
             "development": {
-              "buildTarget": "app-users-v1:build:development"
+              "buildTarget": "app01-standalone:build:development"
             }
           },
           "defaultConfiguration": "development"
