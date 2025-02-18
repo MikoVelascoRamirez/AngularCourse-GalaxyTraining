@@ -1,0 +1,29 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Price</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (product of products; track $index) {
+      <tr style="vertical-align: middle;">
+        <td scope="row">{{ product.id }}</td>
+        <td>
+          {{ product.title | uppercase}}
+          <span>{{product.description | substr:100}}</span>
+        </td>
+        <td class="number">{{ product.price | currency}}</td>
+        <td>
+          <app-category-image [category]="product.category"></app-category-image>
+        </td>
+        <td>
+          @let rate = round(product.rating.rate);
+          <app-star-image [rate]="rate"></app-star-image>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
