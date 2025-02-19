@@ -1,0 +1,7 @@
+<span>
+  @for(star of rateLevelList; track $index){
+    <fa-icon [icon]="faStar" class="star"></fa-icon>
+  }
+  ({{ rate() }})
+</span>
+<br />

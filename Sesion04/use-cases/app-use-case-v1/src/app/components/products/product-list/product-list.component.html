@@ -1,0 +1,39 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Price</th>
+      <th scope="col">Category</th>
+      <th scope="col">Rate</th>
+      <th scope="col">Acción</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (product of products; track $index) {
+      <tr style="vertical-align: middle;">
+        <td scope="row">{{ product.id }}</td>
+        <td>
+          {{ product.title | uppercase}}
+          <span>{{product.description | substr:20}}</span>
+        </td>
+        <td class="number">{{ product.price | currency}}</td>
+        <td>
+          <app-category-image [category]="product.category"></app-category-image>
+        </td>
+        <td>
+          @let rate = round(product.rating.rate);
+          <app-star-image [rate]="rate"></app-star-image>
+        </td>
+        <td>
+          <span title="Ver detalle - Código" (click)="verDetalle(product.id)" style="margin-right: 5px;">
+            <i class="bi bi-view-list"></i>
+          </span>
+          <a title="Ver detalle - Link" [routerLink]="['/product-details/', product.id]">
+            <i class="bi bi-list-nested"></i>
+          </a>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

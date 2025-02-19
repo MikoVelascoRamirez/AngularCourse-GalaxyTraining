@@ -1,0 +1,17 @@
+<h2>Product Details</h2>
+@if(product){
+  <div class="card" style="width: 20rem;">
+    <img src="{{product?.image}}" class="card-img-top" style="height: 15rem; width: 15rem;" alt="{{product.title}}">
+    <div class="card-body">
+      <h5 class="card-title">{{product.title}}</h5>
+      <p class="card-text">{{product.description}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><span class="product-atribute">Price:</span> {{product.price}}</li>
+      <li class="list-group-item"><span class="product-atribute">category:</span> {{product.category}}</li>
+    </ul>
+    <div class="card-body">
+      <span class="card-link"><app-star-image [rate]="round(product.rating.rate)" /></span>
+    </div>
+  </div>
+}
