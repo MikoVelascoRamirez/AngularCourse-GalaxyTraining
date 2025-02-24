@@ -14,30 +14,33 @@ export class ProductDetailsComponent implements OnInit {
   id?: number;
   product?: Product;
 
-  productService = inject(ProductService);
+  // productService = inject(ProductService);
   activatedRoute = inject(ActivatedRoute);
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((param) => {
-      const id = param['id'];
-      if (id) {
-        this.id = id;
-        this.findProductById(id);
-      } else {
-        const tmpId = Number(sessionStorage.getItem('id'));
-        if (tmpId) {
-          this.id = tmpId;
-          this.findProductById(this.id);
-        }
-      }
+    console.log(this.activatedRoute.data);
+    this.activatedRoute.data.subscribe((data: Product | any) => {
+      console.log(data)
+      this.product = data?.product;
+      // const id = param['id'];
+      // if (id) {
+      //   this.id = id;
+      //   // this.findProductById(id);
+      // } else {
+      //   const tmpId = Number(sessionStorage.getItem('id'));
+      //   if (tmpId) {
+      //     this.id = tmpId;
+      //     // this.findProductById(this.id);
+      //   }
+      // }
     });
   }
 
-  findProductById(id: any) {
-    this.productService
-      .getSingleProduct(id)
-      .subscribe((product: Product) => this.product = product);
-  }
+  // findProductById(id: any) {
+    // this.productService
+    //   .getSingleProduct(id)
+    //   .subscribe((product: Product) => this.product = product);
+  // }
 
   round(num?:number){
     if(num){

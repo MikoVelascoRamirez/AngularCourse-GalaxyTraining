@@ -3,6 +3,7 @@ import { ProductListComponent } from './components/products/product-list/product
 import { ProductDetailsComponent } from './components/products/product-details/product-details.component';
 import { CategoryListComponent } from './components/categories/category-list/category-list.component';
 import { HomeComponent } from './components/home/home.component';
+import { productResolver } from './resolvers/product.resolver';
 
 export const routes: Routes = [
 
@@ -20,7 +21,10 @@ export const routes: Routes = [
   },
   {
     path: 'product-details/:id',
-    component: ProductDetailsComponent
+    component: ProductDetailsComponent,
+    resolve: {
+      product: productResolver
+    }
   },
   {
     path: 'category-list',
